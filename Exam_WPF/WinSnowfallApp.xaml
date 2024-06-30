@@ -1,0 +1,42 @@
+﻿<Window x:Class="Exam_WPF.WinSnowfallApp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Exam_WPF"
+        mc:Ignorable="d"
+        Title="雪景色ビューアー" Width="800" Height="450" MinWidth="320" MinHeight="200"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed" Background="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}">
+    <DockPanel>
+        <!-- ================================================================================ -->
+        <!-- メニューバー -->
+        <!-- ================================================================================ -->
+        <Menu DockPanel.Dock="Top" Padding="0,2,0,4">
+            <MenuItem IsTabStop="False" x:Name="MnuDebug" Header="デバッグ(_D)">
+                <MenuItem Header="デバッグ用プログラムを起動(_L)" Click="MnuDebug_LaunchDebugger_Click"/>
+            </MenuItem>
+        </Menu>
+
+        
+        <!-- ================================================================================ -->
+        <!-- メインパネル -->
+        <!-- ================================================================================ -->
+        <Grid>
+            <!-- 背景キャンバス -->
+            <Canvas>
+                <Canvas.Background>
+                    <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                        <GradientStop Offset="0.0" Color="#0000A0"/>    <!-- 夜空の上端 -->
+                        <GradientStop Offset="0.9" Color="#000020"/>    <!-- 夜空の下端 -->
+                        <GradientStop Offset="0.9" Color="#001020"/>    <!-- 地面の上端 -->
+                        <GradientStop Offset="1.0" Color="#004040"/>    <!-- 地面の下端 -->
+                    </LinearGradientBrush>
+                </Canvas.Background>
+            </Canvas>
+
+            <!-- 風景描画ボックス -->
+            <local:CtlRenderBox x:Name="SceneRenderBox"/>
+        </Grid>
+    </DockPanel>
+</Window>
